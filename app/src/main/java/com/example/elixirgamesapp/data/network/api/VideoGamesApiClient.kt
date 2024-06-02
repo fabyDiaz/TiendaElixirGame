@@ -1,6 +1,7 @@
 package com.example.elixirgamesapp.data.network.api
 
 import com.example.elixirgamesapp.data.network.retrofit.RetrofitHelper
+import com.example.elixirgamesapp.data.response.VideoGameDetails
 import com.example.elixirgamesapp.data.response.VideoGameResponse
 
 class VideoGamesApiClient {
@@ -11,4 +12,5 @@ class VideoGamesApiClient {
         val response = retrofit.create(VideoGameService::class.java).getAllVideoGames()
         return response
     }
+
 }

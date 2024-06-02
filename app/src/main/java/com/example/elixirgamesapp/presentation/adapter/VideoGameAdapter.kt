@@ -30,13 +30,13 @@ class VideoGameAdapter: RecyclerView.Adapter<VideoGameAdapter.VideoGameViewHolde
                 bindingItem.textRaiting.text = videoGame.rating.toString()
             }
 
-           /* bindingItem.root.setOnClickListener {
+            bindingItem.root.setOnClickListener {
                 if (::onItemClickListener.isInitialized) {
-                    onItemClickListener(personaje)
+                    onItemClickListener(videoGame)
                 } else {
                     Log.e("Adapter", "Listener not initialized")
                 }
-            }*/
+            }
         }
     }
 
