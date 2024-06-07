@@ -10,7 +10,7 @@ interface VideoGameService {
     @GET("games")
     suspend fun getAllVideoGames(): MutableList<VideoGameResponse>
 
-    @GET("gameDetails/{id]")
+    @GET("gameDetails/{id}")
     suspend fun getVideoGamesById(@Path("id") idVideoGame : Long) : VideoGameDetails
 
 }

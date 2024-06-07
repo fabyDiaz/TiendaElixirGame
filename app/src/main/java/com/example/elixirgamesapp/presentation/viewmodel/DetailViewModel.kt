@@ -15,10 +15,6 @@ class DetailViewModel (private val useCase: VideoGameUseCase) : ViewModel(){
     val videoGamedetails: MutableLiveData<VideoGameDetails>
         get() = _videoGameDetails
 
-    init {
-        getDetailVideoGameById(idVideoGame = -1)
-    }
-
     fun getDetailVideoGameById(idVideoGame : Long) {
         viewModelScope.launch {
             _videoGameDetails.value = useCase.getVideoGameoByIdOnStock(idVideoGame)

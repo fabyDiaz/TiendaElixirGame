@@ -1,5 +1,6 @@
 package com.example.elixirgamesapp.presentation.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = ViewModelFactory(useCase)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(VideoGameViewModel::class.java)
 
-        videoGameAdapter = VideoGameAdapter()
+        videoGameAdapter = VideoGameAdapter(this)
         binding.recyclerVideogame.layoutManager = LinearLayoutManager(this)
         binding.recyclerVideogame.adapter = videoGameAdapter
 
@@ -48,13 +49,14 @@ class MainActivity : AppCompatActivity() {
             videoGameAdapter.videogames = videos.toMutableList()
             videoGameAdapter.notifyDataSetChanged()
         }
-      /* val adapterVideoGame = VideoGameAdapter()
-        binding.recyclerVideogame.adapter = adapterVideoGame
-        binding.recyclerVideogame.layoutManager = LinearLayoutManager(this)
 
-        viewModel.allVideoGame.observe(this){
-            Log.i("GAME", it.toString())
-        }*/
+        videoGameAdapter.setOnItemClickListener { videoGame ->
+            val intent = Intent(this, VideoGameDetails::class.java).apply {
+                Log.i("GAME", videoGame.id.toString())
+                putExtra("ID_VIDEO_GAME", videoGame.id)  // Suponiendo que `id` es el identificador del videojuego
+            }
+            startActivity(intent)
+        }
 
 
 
