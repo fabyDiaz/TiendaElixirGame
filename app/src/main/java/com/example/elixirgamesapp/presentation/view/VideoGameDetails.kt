@@ -47,6 +47,12 @@ class VideoGameDetails : AppCompatActivity() {
                     .into(binding.backgroundImage)
             binding.price.text = it.price.toString()
             binding.volverPersonajes.title = it.name
+            binding.txtanho.text = it.released
+            binding.txtgenero.text = it.genres
+            binding.txtduracion.text = it.genres
+            binding.txtplataformas.text = it.platforms
+            binding.ratingBar.setRating(it.rating.toFloat());
+
 
         }
 
