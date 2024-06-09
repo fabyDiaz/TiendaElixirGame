@@ -1,6 +1,8 @@
 package com.example.elixirgamesapp.presentation.adapter
 
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,10 +12,10 @@ import com.example.elixirgamesapp.databinding.VideogameItemBinding
 import com.squareup.picasso.Picasso
 
 
-class VideoGameAdapter: RecyclerView.Adapter<VideoGameAdapter.VideoGameViewHolder>() {
+class VideoGameAdapter(context: Context): RecyclerView.Adapter<VideoGameAdapter.VideoGameViewHolder>() {
 
     var videogames = mutableListOf<VideoGameResponse>()
-    //lateinit var onItemClickListener: (Personaje) -> Unit
+    private lateinit var onItemClickListener: (VideoGameResponse) -> Unit
 
     inner class VideoGameViewHolder(private var bindingItem: VideogameItemBinding)
         : RecyclerView.ViewHolder(bindingItem.root) {
@@ -30,13 +32,13 @@ class VideoGameAdapter: RecyclerView.Adapter<VideoGameAdapter.VideoGameViewHolde
                 bindingItem.textRaiting.text = videoGame.rating.toString()
             }
 
-           /* bindingItem.root.setOnClickListener {
+            bindingItem.root.setOnClickListener() {
                 if (::onItemClickListener.isInitialized) {
-                    onItemClickListener(personaje)
+                    onItemClickListener(videoGame)
                 } else {
                     Log.e("Adapter", "Listener not initialized")
                 }
-            }*/
+            }
         }
     }
 
@@ -53,6 +55,10 @@ class VideoGameAdapter: RecyclerView.Adapter<VideoGameAdapter.VideoGameViewHolde
     override fun getItemCount(): Int {
         return videogames.size
     }
+    fun setOnItemClickListener(listener: (VideoGameResponse) -> Unit) {
+        onItemClickListener = listener
+    }
+
 
 
    /* var videoGames = mutableListOf<VideoGameResponse>()
