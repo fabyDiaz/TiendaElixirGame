@@ -49,7 +49,7 @@ class VideoGameDetails : AppCompatActivity() {
             binding.volverPersonajes.title = it.name
             binding.txtanho.text = it.released
             binding.txtgenero.text = it.genres
-            binding.txtduracion.text = it.genres
+            binding.txtduracion.text = it.playtime.toString()
             binding.txtplataformas.text = it.platforms
             binding.ratingBar.setRating(it.rating.toFloat());
 
