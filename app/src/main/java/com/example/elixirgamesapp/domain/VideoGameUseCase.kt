@@ -14,4 +14,20 @@ class VideoGameUseCase(private val repository: VideoGameImpl) {
         return repository.fetchVideoGameById(idVideoGame)
     }
 
+    suspend fun saveAllVideoGameDB(videoGame: MutableList<VideoGameResponse>){
+        return repository.saveAllVideoGameOnDB(videoGame)
+    }
+
+    suspend fun getAllVideoGameDB():MutableList<VideoGameResponse>{
+        return repository.getAllVideoGamesFromDB()
+    }
+
+    suspend fun saveDatailsVideoGameOnDB(details: VideoGameDetails){
+        return repository.saveDatailsVideoGameOnDB(details)
+    }
+
+    suspend fun getDetailsVideoGamesFromDB(idVideoGame: Long): VideoGameDetails{
+        return repository.getDetailsVideoGamesFromDB(idVideoGame)
+    }
+
 }

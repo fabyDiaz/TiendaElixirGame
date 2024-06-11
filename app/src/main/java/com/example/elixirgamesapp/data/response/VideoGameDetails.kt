@@ -1,8 +1,11 @@
 package com.example.elixirgamesapp.data.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-
+@Entity(tableName = "videogames_details")
 data class VideoGameDetails (
+    @PrimaryKey
     val id: Long,
     val name: String,
     val released: String,

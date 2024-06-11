@@ -1,5 +1,6 @@
 package com.example.elixirgamesapp.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +18,13 @@ class DetailViewModel (private val useCase: VideoGameUseCase) : ViewModel(){
 
     fun getDetailVideoGameById(idVideoGame : Long) {
         viewModelScope.launch {
-            _videoGameDetails.value = useCase.getVideoGameoByIdOnStock(idVideoGame)
+            try{
+                _videoGameDetails.value = useCase.getVideoGameoByIdOnStock(idVideoGame)
+            }catch(e: Exception){
+                Log.e("DetailActivity", "Not Network Connection")
+                _videoGameDetails.value = useCase.getDetailsVideoGamesFromDB(idVideoGame)
+            }
+
         }
     }
 }

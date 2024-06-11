@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.elixirgamesapp.R
+import com.example.elixirgamesapp.data.local.database.AppDataBase
 import com.example.elixirgamesapp.data.network.api.VideoGameService
 import com.example.elixirgamesapp.data.network.retrofit.RetrofitHelper
 import com.example.elixirgamesapp.data.repository.VideoGameImpl
@@ -35,10 +36,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val apiService = RetrofitHelper.getRetrofit().create(VideoGameService::class.java)
-        val repository = VideoGameImpl(apiService)
+        val dataBase = AppDataBase.getDatabase(application)
+        val repository = VideoGameImpl(apiService, dataBase.videoGameDao())
         val useCase = VideoGameUseCase(repository)
         val viewModelFactory = ViewModelFactory(useCase)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(VideoGameViewModel::class.java)
+
+        viewModel.getAllVideoGamesFromServer()
+        //viewModel.getAllVideoGames()
 
         videoGameAdapter = VideoGameAdapter(this)
         binding.recyclerVideogame.layoutManager = LinearLayoutManager(this)
