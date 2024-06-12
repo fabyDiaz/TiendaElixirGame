@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/videoGameFragment">
+
+    <fragment
+        android:id="@+id/videoGameFragment"
+        android:name="com.example.elixirgamesapp.presentation.view.VideoGameFragment"
+        android:label="fragment_video_game"
+        tools:layout="@layout/fragment_video_game" >
+        <action
+            android:id="@+id/action_videoGameFragment_to_detailVideoGameFragment"
+            app:destination="@id/detailVideoGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailVideoGameFragment"
+        android:name="com.example.elixirgamesapp.presentation.view.DetailVideoGameFragment"
+        android:label="fragment_detail_video_game"
+        tools:layout="@layout/fragment_detail_video_game" />
+</navigation>

@@ -1,18 +1,17 @@
 package com.example.elixirgamesapp.presentation.adapter
 
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.elixirgamesapp.data.response.VideoGameResponse
 import com.example.elixirgamesapp.databinding.VideogameItemBinding
+import com.example.elixirgamesapp.presentation.view.VideoGameFragment
 import com.squareup.picasso.Picasso
 
 
-class VideoGameAdapter(context: Context): RecyclerView.Adapter<VideoGameAdapter.VideoGameViewHolder>() {
+class VideoGameAdapter(context: VideoGameFragment): RecyclerView.Adapter<VideoGameAdapter.VideoGameViewHolder>() {
 
     var videogames = mutableListOf<VideoGameResponse>()
     private lateinit var onItemClickListener: (VideoGameResponse) -> Unit

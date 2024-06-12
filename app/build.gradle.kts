@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 
 }
 
@@ -54,6 +55,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata)
     implementation(libs.retrofit)
     implementation(libs.gson)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.fragment)
     ksp (libs.androidx.room.compiler)
     implementation(libs.converter.gson)
     implementation(libs.picasso)

@@ -5,19 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.viewModelFactory
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.elixirgamesapp.R
 import com.example.elixirgamesapp.data.local.database.AppDataBase
 import com.example.elixirgamesapp.data.network.api.VideoGameService
 import com.example.elixirgamesapp.data.network.retrofit.RetrofitHelper
 import com.example.elixirgamesapp.data.repository.VideoGameImpl
-import com.example.elixirgamesapp.data.repository.VideoGameRepository
 import com.example.elixirgamesapp.databinding.ActivityMainBinding
 import com.example.elixirgamesapp.domain.VideoGameUseCase
 import com.example.elixirgamesapp.presentation.adapter.VideoGameAdapter
@@ -30,9 +24,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var videoGameAdapter: VideoGameAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
 
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        /*   binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val apiService = RetrofitHelper.getRetrofit().create(VideoGameService::class.java)
@@ -65,5 +60,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }*/
     }
 }
