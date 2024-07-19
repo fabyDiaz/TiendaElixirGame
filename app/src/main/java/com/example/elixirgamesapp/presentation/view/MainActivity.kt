@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.elixirgamesapp.R
@@ -26,40 +28,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
-        /*   binding= ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val apiService = RetrofitHelper.getRetrofit().create(VideoGameService::class.java)
-        val dataBase = AppDataBase.getDatabase(application)
-        val repository = VideoGameImpl(apiService, dataBase.videoGameDao())
-        val useCase = VideoGameUseCase(repository)
-        val viewModelFactory = ViewModelFactory(useCase)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(VideoGameViewModel::class.java)
-
-        viewModel.getAllVideoGamesFromServer()
-        //viewModel.getAllVideoGames()
-
-        videoGameAdapter = VideoGameAdapter(this)
-        binding.recyclerVideogame.layoutManager = LinearLayoutManager(this)
-        binding.recyclerVideogame.adapter = videoGameAdapter
-
-        viewModel.allVideoGame.observe(this) { videos ->
-            Log.i("GAME", videos.toString())
-            videoGameAdapter.videogames = videos.toMutableList()
-            videoGameAdapter.notifyDataSetChanged()
-        }
-
-        videoGameAdapter.setOnItemClickListener { videoGame ->
-            val intent = Intent(this, VideoGameDetails::class.java).apply {
-                Log.i("GAME", videoGame.id.toString())
-                putExtra("ID_VIDEO_GAME", videoGame.id)  // Suponiendo que `id` es el identificador del videojuego
-            }
-            startActivity(intent)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
         }
 
 
-
-    }*/
     }
 }

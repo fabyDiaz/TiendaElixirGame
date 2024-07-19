@@ -15,14 +15,10 @@ import com.example.elixirgamesapp.data.local.database.AppDataBase
 import com.example.elixirgamesapp.data.network.api.VideoGameService
 import com.example.elixirgamesapp.data.network.retrofit.RetrofitHelper
 import com.example.elixirgamesapp.data.repository.VideoGameImpl
-import com.example.elixirgamesapp.databinding.ActivityVideoGameDetailsBinding
 import com.example.elixirgamesapp.databinding.FragmentDetailVideoGameBinding
-import com.example.elixirgamesapp.databinding.FragmentVideoGameBinding
 import com.example.elixirgamesapp.domain.VideoGameUseCase
-import com.example.elixirgamesapp.presentation.adapter.VideoGameAdapter
 import com.example.elixirgamesapp.presentation.viewmodel.DetailViewModel
 import com.example.elixirgamesapp.presentation.viewmodel.DetailViewModelFactory
-import com.example.elixirgamesapp.presentation.viewmodel.VideoGameViewModel
 import com.squareup.picasso.Picasso
 
 class DetailVideoGameFragment : Fragment() {
